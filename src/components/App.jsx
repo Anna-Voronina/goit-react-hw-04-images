@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   page: 1,
   perPage: 12,
   showBtn: false,
+  showModal: false,
   loading: false,
 };
 
@@ -48,13 +49,17 @@ export class App extends Component {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
+  toggleModal = () => {
+    this.setState(prevState => ({ showModal: !prevState.showModal }));
+  };
+
   render() {
     const { images, showBtn, loading } = this.state;
 
     return (
       <>
         <SearchBar onSubmit={this.handleSearchFormSubmit} />
-        <ImageGallery images={images} />
+        <ImageGallery images={images} onToggleModal={this.toggleModal} />
         {showBtn && <Button onLoadMoreBtnClick={this.handleLoadMoreBtnClick} />}
         {loading && <Loader />}
       </>
