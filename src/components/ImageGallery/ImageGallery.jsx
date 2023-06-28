@@ -1,14 +1,10 @@
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
-export const ImageGallery = ({ images, onToggleModal }) => {
+export const ImageGallery = ({ images }) => {
   return (
     <ul className="gallery">
       {images.map(image => (
-        <ImageGalleryItem
-          key={image.tags}
-          image={image}
-          onToggleModal={onToggleModal}
-        />
+        <ImageGalleryItem key={image.tags} image={image} />
       ))}
     </ul>
   );
