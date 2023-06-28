@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { createPortal } from 'react-dom';
+import css from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -28,9 +29,9 @@ export class Modal extends Component {
     const { largeImageURL, tags } = this.props;
 
     return createPortal(
-      <div className="backdrop" onClick={this.handleBackdropClick}>
-        <div className="modal">
-          <img src={largeImageURL} alt={tags} />
+      <div className={css.Backdrop} onClick={this.handleBackdropClick}>
+        <div className={css.Modal}>
+          <img className={css.ModalImg} src={largeImageURL} alt={tags} />
         </div>
       </div>,
       modalRoot
