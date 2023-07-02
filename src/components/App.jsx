@@ -4,11 +4,12 @@ import { SearchBar, ImageGallery, Button, Loader } from 'components';
 import { fetchImages } from 'services/pixabay-api';
 import css from './App.module.css';
 
+const perPage = 12;
+
 export const App = () => {
   const [images, setImages] = useState([]);
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
-  const [perPage] = useState(12);
   const [showBtn, setShowBtn] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -34,7 +35,7 @@ export const App = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [page, perPage, query]);
+  }, [page, query]);
 
   const handleSearchFormSubmit = inputValue => {
     const normalizedInputValue = inputValue.trim();
